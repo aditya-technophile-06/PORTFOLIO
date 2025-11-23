@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { useState } from 'react';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { personalInfo } from '@/constants/data';
 
 const navLinks = [
@@ -66,19 +66,6 @@ export function Navbar() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
               </motion.a>
             ))}
-            
-            <motion.a
-              href={personalInfo.resume}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary flex items-center gap-2"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-            >
-              <span>Resume</span>
-              <Download className="w-4 h-4" />
-            </motion.a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -109,15 +96,6 @@ export function Navbar() {
                 {link.name}
               </a>
             ))}
-            <a
-              href={personalInfo.resume}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary inline-flex items-center gap-2 w-full justify-center"
-            >
-              <span>Resume</span>
-              <Download className="w-4 h-4" />
-            </a>
           </div>
         </motion.div>
       </div>

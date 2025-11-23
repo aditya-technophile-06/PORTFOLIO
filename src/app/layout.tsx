@@ -4,24 +4,24 @@ import { Toaster } from "react-hot-toast";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "Your Name | Portfolio",
-  description: "Personal portfolio showcasing my work, skills, and experience in web development and design.",
-  keywords: ["portfolio", "web developer", "frontend", "react", "next.js", "3D"],
-  authors: [{ name: "Your Name" }],
+  title: "Aditya M | Portfolio",
+  description: "Portfolio for Aditya M — full-stack developer focused on secure, intelligent web experiences.",
+  keywords: ["Aditya M", "portfolio", "full stack", "security", "AI", "Next.js"],
+  authors: [{ name: "Aditya M" }],
   themeColor: "#0f172a",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://your-portfolio.com",
-    title: "Your Name | Portfolio",
-    description: "Personal portfolio showcasing my work, skills, and experience in web development and design.",
-    siteName: "Your Portfolio",
+    url: "https://aditya-portfolio.com",
+    title: "Aditya M | Portfolio",
+    description: "Portfolio for Aditya M — full-stack developer focused on secure, intelligent web experiences.",
+    siteName: "Aditya M Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Your Name | Portfolio",
-    description: "Personal portfolio showcasing my work, skills, and experience in web development and design.",
-    creator: "@yourtwitter",
+    title: "Aditya M | Portfolio",
+    description: "Portfolio for Aditya M — full-stack developer focused on secure, intelligent web experiences.",
+    creator: "@aditya",
   },
 };
 
