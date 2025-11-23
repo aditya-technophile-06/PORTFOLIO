@@ -11,32 +11,35 @@ import { Projects } from '@/components/sections/Projects';
 import { Experience } from '@/components/sections/Experience';
 import { Contact } from '@/components/sections/Contact';
 import { personalInfo } from '@/constants/data';
+import Scene from '@/components/3d/Scene';
+import DispersingSphere from '@/components/3d/DispersingSphere';
 
 export default function Home() {
   return (
     <>
       <Navbar />
+      <Scene className="pointer-events-none">
+        <DispersingSphere />
+      </Scene>
       <main className="min-h-screen">
         {/* Hero Section */}
         <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        {/* Animated Background */}
-        <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute inset-0 bg-grid-slate-700/20 [mask-image:linear-gradient(0deg,transparent,black)]"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 to-slate-900"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(30,41,59,0.8),transparent_70%)]"></div>
+        {/* Animated Background - Reduced opacity for 3D visibility */}
+        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/20 to-slate-900/80"></div>
         </div>
 
         {/* Content */}
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <motion.div 
-            className="relative max-w-4xl mx-auto text-center rounded-[32px] border border-slate-800/60 bg-slate-900/70 backdrop-blur-2xl px-6 py-10 md:px-12 md:py-14 shadow-[0_40px_120px_rgba(15,23,42,0.85)] overflow-hidden"
+            className="relative max-w-4xl mx-auto text-center rounded-[32px] border border-slate-800/40 bg-slate-900/30 backdrop-blur-xl px-6 py-10 md:px-12 md:py-14 shadow-[0_40px_120px_rgba(15,23,42,0.5)] overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             <div className="pointer-events-none absolute inset-0">
-              <div className="absolute -top-10 -right-10 w-64 h-64 bg-blue-500/30 blur-[140px]" />
-              <div className="absolute -bottom-16 -left-10 w-72 h-72 bg-purple-500/25 blur-[160px]" />
+              <div className="absolute -top-10 -right-10 w-64 h-64 bg-blue-500/20 blur-[140px]" />
+              <div className="absolute -bottom-16 -left-10 w-72 h-72 bg-purple-500/15 blur-[160px]" />
             </div>
             <motion.p 
               className="text-blue-400 font-mono text-sm md:text-base mb-4 tracking-[0.3em] uppercase"
