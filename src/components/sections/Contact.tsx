@@ -6,6 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import emailjs from '@emailjs/browser';
 
 const socialPlatforms = [
   {
@@ -44,26 +45,34 @@ export function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      toast.error('Email service is not configured correctly.');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
         },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data?.error || 'Failed to send message.');
-      }
+        publicKey
+      );
 
       toast.success("Message sent successfully! I'll get back to you soon.");
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
       console.error(error);
-      toast.error(error instanceof Error ? error.message : 'Something went wrong. Please try again later.');
+      toast.error('Something went wrong. Please try again later.');
     } finally {
       setIsSubmitting(false);
     }
