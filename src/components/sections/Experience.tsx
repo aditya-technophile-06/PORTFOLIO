@@ -1,9 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { workExperience, education, achievements, Education, type Experience } from '@/constants/data';
+import { workExperience, education, achievements, volunteering, Education, type Experience } from '@/constants/data';
 import { useInView } from 'react-intersection-observer';
-import { Briefcase, GraduationCap, Award, Calendar, MapPin } from 'lucide-react';
+import { Briefcase, GraduationCap, Award, Calendar, MapPin, UsersRound } from 'lucide-react';
 import Image from 'next/image';
 
 type TimelineItem = NonNullable<Experience['timeline']>[number];
@@ -52,8 +52,24 @@ export function Experience() {
                     <div className="flex items-center gap-3">
                       <Image src={exp.logo} alt={exp.company} width={40} height={40} className="rounded-lg object-cover" />
                       <div>
-                        <h4 className="text-xl font-bold text-white mb-1">{exp.title}</h4>
-                        <p className="text-blue-400 font-medium">{exp.company}</p>
+                        <h4 className="text-xl font-bold text-white mb-1">
+                          {exp.website ? (
+                            <a href={exp.website} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
+                              {exp.title}
+                            </a>
+                          ) : (
+                            exp.title
+                          )}
+                        </h4>
+                        <p className="text-blue-400 font-medium">
+                          {exp.website ? (
+                            <a href={exp.website} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                              {exp.company}
+                            </a>
+                          ) : (
+                            exp.company
+                          )}
+                        </p>
                       </div>
                     </div>
                     <div className="flex flex-col md:items-end gap-1">
@@ -167,13 +183,29 @@ export function Experience() {
                       <div className="flex items-center gap-3">
                         <Image src={edu.logo} alt={edu.university} width={48} height={48} className="rounded-lg object-cover" />
                         <div className="text-center md:text-left">
-                          <h4 className="text-xl font-bold text-white mb-1 leading-snug">{degreeTitle.trim()}</h4>
+                          <h4 className="text-xl font-bold text-white mb-1 leading-snug">
+                            {edu.website ? (
+                              <a href={edu.website} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
+                                {degreeTitle.trim()}
+                              </a>
+                            ) : (
+                              degreeTitle.trim()
+                            )}
+                          </h4>
                           {specialization && (
                             <p className="text-blue-300 text-sm font-medium leading-tight md:text-left">
                               {specialization}
                             </p>
                           )}
-                          <p className="text-blue-400 font-medium mt-1">{edu.university}</p>
+                          <p className="text-blue-400 font-medium mt-1">
+                            {edu.website ? (
+                              <a href={edu.website} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                                {edu.university}
+                              </a>
+                            ) : (
+                              edu.university
+                            )}
+                          </p>
                           {edu.stream && (
                             <p className="text-slate-400 text-sm">{edu.stream}</p>
                           )}
@@ -212,13 +244,62 @@ export function Experience() {
             </div>
           </div>
 
-          {/* Achievements & Certifications */}
-          <div>
+          {/* Volunteering */}
+          <div className="mt-12">
             <motion.div
               className="flex items-center gap-3 mb-8"
               initial={{ opacity: 0, x: -20 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <UsersRound className="w-6 h-6 text-blue-400" />
+              <h3 className="text-2xl font-bold text-slate-200">Volunteering</h3>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {volunteering.map((role, index) => (
+                <motion.div
+                  key={`${role.organization}-${index}`}
+                  className="card flex items-start gap-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
+                >
+                  <Image src={role.logo} alt={role.organization} width={48} height={48} className="rounded-lg object-cover" />
+                  <div>
+                    <h4 className="text-lg font-semibold text-white">
+                      {role.website ? (
+                        <a href={role.website} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">
+                          {role.title}
+                        </a>
+                      ) : (
+                        role.title
+                      )}
+                    </h4>
+                    <p className="text-blue-400 text-sm">
+                      {role.website ? (
+                        <a href={role.website} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                          {role.organization}
+                        </a>
+                      ) : (
+                        role.organization
+                      )}
+                    </p>
+                    <p className="text-slate-400 text-xs mb-1">{role.duration}</p>
+                    {role.category && <p className="text-slate-500 text-xs">{role.category}</p>}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Achievements & Certifications */}
+          <div className="mt-12">
+            <motion.div
+              className="flex items-center gap-3 mb-8"
+              initial={{ opacity: 0, x: -20 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.8 }}
             >
               <Award className="w-6 h-6 text-blue-400" />
               <h3 className="text-2xl font-bold text-slate-200">Achievements & Certifications</h3>
@@ -231,7 +312,7 @@ export function Experience() {
                   className="card group hover:scale-105 transition-transform duration-300"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                  transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
                 >
                   <div className="flex items-start gap-4">
                     <div className="p-3 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg group-hover:scale-110 transition-transform">

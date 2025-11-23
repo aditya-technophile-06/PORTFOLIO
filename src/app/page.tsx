@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowDownTrayIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
+import { EnvelopeIcon, ArrowLongRightIcon } from '@heroicons/react/24/outline';
 import { SocialIcons } from '@/components/ui/SocialIcons';
 import { Navbar } from '@/components/ui/Navbar';
 import { Footer } from '@/components/ui/Footer';
@@ -29,13 +29,17 @@ export default function Home() {
         {/* Content */}
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <motion.div 
-            className="max-w-4xl mx-auto text-center"
+            className="relative max-w-4xl mx-auto text-center rounded-[32px] border border-slate-800/60 bg-slate-900/70 backdrop-blur-2xl px-6 py-10 md:px-12 md:py-14 shadow-[0_40px_120px_rgba(15,23,42,0.85)] overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
+            <div className="pointer-events-none absolute inset-0">
+              <div className="absolute -top-10 -right-10 w-64 h-64 bg-blue-500/30 blur-[140px]" />
+              <div className="absolute -bottom-16 -left-10 w-72 h-72 bg-purple-500/25 blur-[160px]" />
+            </div>
             <motion.p 
-              className="text-blue-400 font-mono text-sm md:text-base mb-4"
+              className="text-blue-400 font-mono text-sm md:text-base mb-4 tracking-[0.3em] uppercase"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
@@ -44,12 +48,12 @@ export default function Home() {
             </motion.p>
             
             <motion.h1 
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 relative inline-block"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              <span className="gradient-text">{personalInfo.name}</span>.
+              <span className="gradient-text drop-shadow-[0_10px_35px_rgba(99,102,241,0.45)]">{personalInfo.name}</span>.
             </motion.h1>
             
             <motion.h2 
@@ -78,31 +82,30 @@ export default function Home() {
             >
               <a 
                 href="#contact" 
-                className="btn-primary flex items-center gap-2 group"
+                className="btn-primary flex items-center gap-2 group shadow-lg shadow-blue-500/30"
               >
                 <span>Get In Touch</span>
                 <EnvelopeIcon className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </a>
               
               <a 
-                href="/resume.pdf" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="btn-outline flex items-center gap-2 group"
+                href="#projects"
+                className="btn-outline flex items-center gap-2 group border-blue-500/40 text-blue-300 hover:border-blue-400"
               >
-                <span>View Resume</span>
-                <ArrowDownTrayIcon className="w-4 h-4 transition-transform group-hover:translate-y-1" />
+                <span>Explore Projects</span>
+                <ArrowLongRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </a>
             </motion.div>
             
             {/* Social Icons */}
             <motion.div 
-              className="mt-16"
+              className="mt-16 flex flex-col items-center gap-3"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.8 }}
             >
-              <p className="text-slate-400 text-sm mb-4">FIND ME ON</p>
+              <p className="text-slate-400 text-sm tracking-[0.4em] uppercase">Find me on</p>
+              <div className="w-16 h-1 rounded-full bg-gradient-to-r from-blue-500 to-purple-500" />
               <SocialIcons />
             </motion.div>
           </motion.div>

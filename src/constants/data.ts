@@ -8,7 +8,7 @@ import {
   SiFlask, SiDjango, SiFastapi, SiNginx, SiOracle,
   SiBitbucket, SiJfrog, SiNomad
 } from 'react-icons/si';
-import { FaJava, FaMicrosoft, FaDatabase, FaShieldAlt } from 'react-icons/fa';
+import { FaJava, FaMicrosoft, FaDatabase, FaShieldAlt, FaBrain, FaRobot, FaNetworkWired, FaLayerGroup, FaComments, FaLock, FaFingerprint } from 'react-icons/fa';
 import { IconType } from 'react-icons';
 
 export const personalInfo = {
@@ -56,7 +56,15 @@ export const skills: Skill[] = [
   { name: "Spring Boot", icon: SiSpringboot, color: "#6DB33F", category: "Backend" },
   { name: "FastAPI", icon: SiFastapi, color: "#009688", category: "Backend" },
   { name: "Flask", icon: SiFlask, color: "#000000", category: "Backend" },
-  
+
+  // AI & ML
+  { name: "Machine Learning", icon: FaBrain, color: "#F59E0B", category: "AI/ML" },
+  { name: "LangChain", icon: FaRobot, color: "#9F7AEA", category: "AI/ML" },
+  { name: "RAG", icon: FaRobot, color: "#8B5CF6", category: "AI/ML" },
+  { name: "OpenRouter", icon: FaNetworkWired, color: "#4ADE80", category: "AI/ML" },
+  { name: "CNN", icon: FaLayerGroup, color: "#F472B6", category: "AI/ML" },
+  { name: "NLP", icon: FaComments, color: "#38BDF8", category: "AI/ML" },
+
   // Databases
   { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1", category: "Database" },
   { name: "MySQL", icon: SiMysql, color: "#4479A1", category: "Database" },
@@ -84,6 +92,29 @@ export const skills: Skill[] = [
   
   // Security
   { name: "Cryptography", icon: FaShieldAlt, color: "#FF6B6B", category: "Security" },
+  { name: "SSL Pinning", icon: FaLock, color: "#F97316", category: "Security" },
+  { name: "Code Obfuscation", icon: FaFingerprint, color: "#DB2777", category: "Security" },
+  { name: "Session Security", icon: FaLock, color: "#06B6D4", category: "Security" },
+];
+
+export interface VolunteerRole {
+  title: string;
+  organization: string;
+  duration: string;
+  category?: string;
+  logo: string;
+  website?: string;
+}
+
+export const volunteering: VolunteerRole[] = [
+  {
+    title: "Member",
+    organization: "IEEE Computational Intelligence Society",
+    duration: "Feb 2022 - Jan 2025 · 3 yrs",
+    category: "Science and Technology",
+    logo: "/images/ieeecis_logo.jpeg",
+    website: "https://cis.ieee.org/"
+  }
 ];
 
 export interface Project {
@@ -150,6 +181,7 @@ export const education = [
     grade: "8.81",
     activities: "IEEE",
     logo: "/images/vvceofficial_logo.jpeg",
+    website: "https://vvce.ac.in/",
     skills: [
       "REST APIs", "Team Leadership", "Python (Programming Language)", "Artificial Intelligence (AI)",
       "Flutter", "Data Structures", "Analytical Skills", "Version Control", "Java", "Machine Learning",
@@ -164,6 +196,7 @@ export const education = [
     stream: "Science & Mathematics",
     grade: "88.6 %",
     logo: "/images/expert_group_of_institutions_logo.jpeg",
+    website: "https://expertedu.co.in/valachil/",
     skills: ["Public Speaking", "Communication"]
   },
   {
@@ -174,6 +207,7 @@ export const education = [
     grade: "87.6 %",
     logo: "/images/JSSPS.jpeg",
     activities: "Athlete, State level Handball player",
+    website: "https://www.jsspublicschoolbage.com/",
     skills: ["Leadership", "Communication"]
   }
 ];
@@ -187,6 +221,7 @@ export interface Experience {
   summary?: string;
   description: string[];
   skills?: string[];
+  website?: string;
   timeline?: {
     position: string;
     duration: string;
@@ -204,24 +239,44 @@ export const workExperience: Experience[] = [
     duration: "Dec 2024 - Present · 1 yr",
     location: "Bangalore Urban, Karnataka, India · On-site",
     logo: "/images/azentio_logo.jpeg",
-    summary: "Building enterprise banking solutions across apprentice and internship programs with a focus on TypeScript, React.js, and modern backend services.",
+    website: "https://www.azentio.com/",
+    summary: "Developing resilient BFSI products with modern web stacks, strong security controls, and close collaboration across engineering and DevOps teams.",
     description: [
-      "Drive the SiteBuilder platform for BFSI clients, delivering modern digital products with reusable React components and AI-enabled workflows",
-      "Engineer and optimize REST APIs for configuration, translation, migration, and import/export features with caching for performance",
-      "Integrate Keycloak-based RBAC, regex-driven bindings, and security architecture into responsive frontend experiences",
-      "Work cross-functionally with product, design, and DevOps teams to ship banking capabilities from concept to deployment"
+      "Develop modern digital products for banking, finance, and insurance (BFSI) clients with a focus on full-stack delivery",
+      "Build reusable UI components that plug into API payloads and speed up feature launches",
+      "Develop CRUD REST APIs plus import/export migration APIs so projects move safely across environments",
+      "Integrate Keycloak and enforce role-based access control across the application",
+      "Improve performance by consolidating responses into single endpoints and adding caching",
+      "Work with the team on Zustand state management patterns",
+      "Implement client-side security for banking flows using double encryption, obfuscation, SSL pinning, and session encryption",
+      "Build AI services and MCP automations that convert Figma/XD screens into the JSON payloads required by the platform",
+      "Collaborated with DevOps on environment setup, database migrations, and deployments"
     ],
     skills: [
       "TypeScript",
       "React",
       "Next.js",
+      "Zustand",
       "Java",
       "Spring Boot",
+      "Python",
+      "FastAPI",
       "PostgreSQL",
+      "Oracle Database",
+      "Qdrant",
       "REST APIs",
-      "Bitbucket",
       "Keycloak",
-      "Microservices"
+      "LangChain",
+      "RAG",
+      "Oracle Cloud",
+      "Nomad",
+      "JFrog",
+      "Grafana",
+      "Jira",
+      "Bitbucket",
+      "Git",
+      "Linux",
+      "Security"
     ],
     timeline: [
       {
@@ -230,10 +285,10 @@ export const workExperience: Experience[] = [
         employmentType: "Full-time",
         location: "Bangalore Urban, Karnataka, India",
         description: [
-          "Own SiteBuilder UI releases using TypeScript and React, integrating APIs and AI features into drag-and-drop journeys",
-          "Build reusable components and mentor interns on repository workflows, code reviews, and quality gates"
+          "Shipped AI/MCP services that turn Figma and XD flows into JSON journeys for the banking platform",
+          "Hardened client-facing UI with double encryption, obfuscation, SSL pinning, session encryption, and mentored interns on these patterns"
         ],
-        skills: ["TypeScript", "React", "APIs", "AI Integrations"]
+        skills: ["TypeScript", "React", "AI Services", "Security"]
       },
       {
         position: "Software Developer Intern",
@@ -241,10 +296,10 @@ export const workExperience: Experience[] = [
         employmentType: "Internship",
         location: "Bangalore Urban, Karnataka, India",
         description: [
-          "Built responsive BFSI web components using React and TypeScript, improving SiteBuilder usability",
-          "Optimized backend queries, caching layers, and deployment automations via Bitbucket-driven CI/CD"
+          "Built BFSI components with React, TypeScript, Next.js, and Zustand that connect directly to API payloads",
+          "Developed CRUD and migration REST APIs, collaborating with DevOps on environment setup, database migrations, and deployments"
         ],
-        skills: ["React", "TypeScript", "PostgreSQL", "Bitbucket"]
+        skills: ["React", "TypeScript", "Next.js", "DevOps Collaboration"]
       }
     ]
   },
@@ -255,10 +310,10 @@ export const workExperience: Experience[] = [
     location: "Remote",
     logo: "/images/finlatics_logo.jpeg",
     description: [
-      "Built dashboard components and API integrations using React and Node.js",
-      "Paired with senior engineers in agile ceremonies to deliver sprint commitments"
+      "Data analytics & modeling: analyzed datasets and built prediction models in Python that improved forecasting accuracy by 25%",
+      "Delivered YouTube Data Analysis, Wine Quality ML, Sales Prediction Analysis, and Facebook Marketplace Analysis projects with clean visualizations and insights"
     ],
-    skills: ["React", "Node.js", "Agile"]
+    skills: ["Python", "Machine Learning", "Data Analytics"]
   },
   {
     title: "Co-Founder",
@@ -266,12 +321,13 @@ export const workExperience: Experience[] = [
     duration: "Sep 2024 - Present · 1 yr 3 mos",
     location: "Mysore, Karnataka, India",
     logo: "/images/ppgs.jpeg",
-    summary: "Leading a student-led initiative that drives policy discussions, mentorship, and civic impact programs across campus.",
+    website: "https://ppgsiitkgp.in/",
+    summary: "Student-led society at Vidyavardhaka College of Engineering focused on reimagining public policy and governance for a better future.",
     description: [
-      "Facilitate UPSC discussions, mentorship sessions, and dialogues with industry experts and civil servants",
-      "Design programs that cultivate leadership, analytical thinking, and community engagement"
+      "We host discussions, policy forums, and mentorship circles that help students build leadership and critical thinking.",
+      "With PPGS IIT Kharagpur we give students networking, guidance, and skill-building chances so they can act on real civic change."
     ],
-    skills: ["Public Speaking", "Analytical Skills", "+4 skills"]
+    skills: ["Leadership", "Communication", "Teamwork", "Research", "Analytical"]
   },
   {
     title: "Department Placement Coordinator",
@@ -279,11 +335,12 @@ export const workExperience: Experience[] = [
     duration: "May 2024 - Jun 2025 · 1 yr 2 mos",
     location: "Mysore, Karnataka, India",
     logo: "/images/vvceofficial_logo.jpeg",
+    website: "https://vvce.ac.in/",
     description: [
       "Acted as liaison between students and the placement cell to streamline recruitment drives",
       "Facilitated communication, scheduling, and reporting to keep students informed about opportunities"
     ],
-    skills: ["Interpersonal Skills", "Communication", "+3 skills"]
+    skills: ["Communication", "Leadership", "Management", "Coordination"]
   }
 ];
 
@@ -296,6 +353,7 @@ export interface Education {
   activities?: string;
   logo: string;
   skills: string[];
+  website?: string;
 }
 
 export interface Achievement {
@@ -308,27 +366,27 @@ export interface Achievement {
 
 export const achievements: Achievement[] = [
   {
-    title: "AWS Certified Solutions Architect",
-    issuer: "Amazon Web Services",
+    title: "Infothon 3.0 - National Winner",
+    issuer: "National Level Hackathon",
+    date: "Jul 2024",
+    description: "1st place under the Social Innovation theme at Infothon 3.0.",
+  },
+  {
+    title: "RBI90 State Level Quiz Finalist",
+    issuer: "Reserve Bank of India",
     date: "2023",
-    description: "Professional level certification for designing distributed systems on AWS",
+    description: "Advanced to the RBI90 quiz finals representing Mysore district.",
   },
   {
-    title: "Google Cloud Professional Developer",
-    issuer: "Google Cloud",
+    title: "AI Blueprint for Bharat - Rank 5",
+    issuer: "IIT Kharagpur",
     date: "2023",
-    description: "Certification for building scalable applications on GCP",
+    description: "National Rank 5 in the AI Blueprint for Bharat case study competition.",
   },
   {
-    title: "Kubernetes Administrator (CKA)",
-    issuer: "Cloud Native Computing Foundation",
-    date: "2022",
-    description: "Certification for Kubernetes administration and orchestration",
-  },
-  {
-    title: "Hackathon Winner",
-    issuer: "TechFest 2022",
-    date: "2022",
-    description: "First place in national level hackathon for innovative AI solution",
+    title: "Vision AI900 Perfect Score",
+    issuer: "Microsoft Learn",
+    date: "2023",
+    description: "Earned a perfect 1000 score in Vision AI900, ranking top 10 globally.",
   },
 ];
