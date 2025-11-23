@@ -26,29 +26,37 @@ export function About() {
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Profile Image */}
           <motion.div
-            className="relative"
+            className="relative flex justify-center"
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="relative w-full aspect-square max-w-md mx-auto">
-              {/* Gradient Border */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl blur-xl opacity-50 animate-pulse"></div>
+            <div className="relative w-64 h-80 md:w-72 md:h-96 group">
+              {/* Glow Effect */}
+              <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-b from-blue-500/20 to-purple-500/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               
-              {/* Image Container */}
-              <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-slate-700/50 backdrop-blur-sm">
-                <Image
-                  src={personalInfo.profileImage}
-                  alt={personalInfo.name}
-                  fill
-                  className="object-cover"
-                  priority
-                />
+              {/* Main Container */}
+              <div className="relative w-full h-full rounded-[2rem] overflow-hidden p-[1px] z-10 transition-transform duration-500 group-hover:-translate-y-2">
+                {/* Animated Border */}
+                <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#6366f1_360deg)] animate-[spin_6s_linear_infinite] opacity-30 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Inner Background */}
+                <div className="absolute inset-[1px] bg-slate-900 rounded-[2rem] z-20"></div>
+                
+                {/* Image */}
+                <div className="relative w-full h-full rounded-[2rem] overflow-hidden z-30">
+                  <Image
+                    src={personalInfo.profileImage}
+                    alt={personalInfo.name}
+                    fill
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    priority
+                  />
+                  
+                  {/* Overlay Gradient for better text contrast if needed, or just aesthetic */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
               </div>
-
-              {/* Decorative Elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-500/20 rounded-full blur-2xl"></div>
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl"></div>
             </div>
           </motion.div>
 

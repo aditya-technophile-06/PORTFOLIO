@@ -1,4 +1,4 @@
-import { 
+import {
   SiCplusplus, SiPython, SiJavascript, SiTypescript, SiReact, SiNextdotjs,
   SiNodedotjs, SiExpress, SiMongodb, SiPostgresql, SiMysql, SiRedis,
   SiDocker, SiKubernetes, SiGit, SiGithub, SiJenkins,
@@ -18,7 +18,7 @@ export const personalInfo = {
   phone: "+91 8861061103",
   location: "Bangalore, Karnataka, India",
   bio: "Full stack developer with deep interest in web architecture, application security, and AI/ML-powered experiences. I enjoy shipping resilient products that blend clean engineering with thoughtful design.",
-  profileImage: "/images/profile.png",
+  profileImage: "/images/me.jpg",
   resume: "/resume.pdf",
 };
 
@@ -42,7 +42,7 @@ export const skills: Skill[] = [
   { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E", category: "Languages" },
   { name: "TypeScript", icon: SiTypescript, color: "#3178C6", category: "Languages" },
   { name: "Java", icon: FaJava, color: "#007396", category: "Languages" },
-  
+
   // Frontend
   { name: "React", icon: SiReact, color: "#61DAFB", category: "Frontend" },
   { name: "Next.js", icon: SiNextdotjs, color: "#000000", category: "Frontend" },
@@ -50,7 +50,7 @@ export const skills: Skill[] = [
   { name: "CSS3", icon: SiCss3, color: "#1572B6", category: "Frontend" },
   { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4", category: "Frontend" },
   { name: "Bootstrap", icon: SiBootstrap, color: "#7952B3", category: "Frontend" },
-  
+
   // Backend
   { name: "Node.js", icon: SiNodedotjs, color: "#339933", category: "Backend" },
   { name: "Spring Boot", icon: SiSpringboot, color: "#6DB33F", category: "Backend" },
@@ -71,7 +71,7 @@ export const skills: Skill[] = [
   { name: "Oracle", icon: SiOracle, color: "#F80000", category: "Database" },
   { name: "Qdrant", icon: FaDatabase, color: "#00D4FF", category: "Database" },
   { name: "Chroma DB", icon: FaDatabase, color: "#4CAF50", category: "Database" },
-  
+
   // DevOps & Cloud
   { name: "Docker", icon: SiDocker, color: "#2496ED", category: "DevOps" },
   { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5", category: "DevOps" },
@@ -79,7 +79,7 @@ export const skills: Skill[] = [
   { name: "JFrog", icon: SiJfrog, color: "#40B3E0", category: "DevOps" },
   { name: "Azure AI", icon: FaMicrosoft, color: "#0078D4", category: "Cloud" },
   { name: "GCP", icon: SiGooglecloud, color: "#4285F4", category: "Cloud" },
-  
+
   // Tools & Others
   { name: "Git", icon: SiGit, color: "#F05032", category: "Tools" },
   { name: "GitHub", icon: SiGithub, color: "#181717", category: "Tools" },
@@ -89,7 +89,7 @@ export const skills: Skill[] = [
   { name: "Swagger", icon: SiSwagger, color: "#85EA2D", category: "Tools" },
   { name: "Jira", icon: SiJira, color: "#0052CC", category: "Tools" },
   { name: "Linux", icon: SiLinux, color: "#FCC624", category: "Tools" },
-  
+
   // Security
   { name: "Cryptography", icon: FaShieldAlt, color: "#FF6B6B", category: "Security" },
   { name: "SSL Pinning", icon: FaLock, color: "#F97316", category: "Security" },

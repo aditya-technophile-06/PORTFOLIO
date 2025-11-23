@@ -11,7 +11,7 @@ export default function DispersingSphere() {
 
   // Geometry settings
   const radius = 1.8; // Reduced from 2.5
-  const detail = 2; 
+  const detail = 1; // Reduced from 2 to 1 for fewer spheres 
 
   // Generate Base and Random positions
   const { basePositions, randomPositions, randomRotations } = useMemo(() => {

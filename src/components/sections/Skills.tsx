@@ -1,9 +1,80 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useAnimationFrame, useSpring } from 'framer-motion';
 import { skills } from '@/constants/data';
 import { useInView } from 'react-intersection-observer';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+
+function SkillItem({ skill, index }: { skill: any, index: number }) {
+  const Icon = skill.icon;
+  const rotateY = useMotionValue(0);
+  const rotateX = useMotionValue(0);
+  const [isInteracting, setIsInteracting] = useState(false);
+  
+  // Smooth rotation for auto-spin
+  const smoothRotateY = useSpring(rotateY, { damping: 20, stiffness: 100 });
+  const smoothRotateX = useSpring(rotateX, { damping: 20, stiffness: 100 });
+
+  useAnimationFrame((t, delta) => {
+    if (!isInteracting) {
+      // Continuous rotation like a coin
+      rotateY.set(rotateY.get() + 1);
+      // Slowly reset X rotation if it was changed
+      if (rotateX.get() !== 0) {
+        rotateX.set(rotateX.get() * 0.95);
+      }
+    }
+  });
+
+  const handlePointerDown = () => setIsInteracting(true);
+  const handlePointerUp = () => setIsInteracting(false);
+  const handlePointerLeave = () => setIsInteracting(false);
+  
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (isInteracting) {
+      rotateY.set(rotateY.get() + e.movementX);
+      rotateX.set(rotateX.get() - e.movementY);
+    }
+  };
+
+  return (
+    <div 
+      className="relative flex flex-col items-center justify-center gap-4 cursor-grab active:cursor-grabbing"
+      style={{ perspective: 1000 }}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      onPointerLeave={handlePointerLeave}
+      onPointerMove={handlePointerMove}
+    >
+      <motion.div
+        style={{ 
+          rotateY: smoothRotateY, 
+          rotateX: smoothRotateX,
+          transformStyle: "preserve-3d"
+        }}
+        className="relative w-24 h-24 flex items-center justify-center"
+      >
+        {/* Front */}
+        <div 
+          className="text-6xl drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+          style={{ color: skill.color }}
+        >
+          <Icon />
+        </div>
+        
+        {/* Back (Optional: duplicate icon or different content) */}
+        {/* For a true coin feel, we can add a back face, but for now just the icon rotating is fine. 
+            Standard icons are 2D, so they will look flat from the side. 
+            To make it look like a coin, we'd need a cylinder or thick div. 
+            Let's keep it simple first as requested "only logos". */}
+      </motion.div>
+      
+      <p className="text-sm font-medium text-slate-400 select-none">
+        {skill.name}
+      </p>
+    </div>
+  );
+}
 
 export function Skills() {
   const [ref, inView] = useInView({
@@ -32,7 +103,7 @@ export function Skills() {
 
         {/* Category Filter */}
         <motion.div
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex flex-wrap justify-center gap-3 mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -53,42 +124,17 @@ export function Skills() {
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto">
-          {filteredSkills.map((skill, index) => {
-            const Icon = skill.icon;
-            return (
-              <motion.div
-                key={skill.name}
-                className="group relative flex-shrink-0"
-                style={{ width: '120px' }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                whileHover={{ y: -8, scale: 1.05 }}
-              >
-                <div className="card h-full flex flex-col items-center justify-center p-6 space-y-3 group-hover:shadow-xl group-hover:shadow-blue-500/20 transition-all duration-300">
-                  {/* Icon */}
-                  <div 
-                    className="text-5xl transition-all duration-300 group-hover:scale-110"
-                    style={{ color: skill.color }}
-                  >
-                    <Icon />
-                  </div>
-                  
-                  {/* Skill Name */}
-                  <p className="text-sm font-medium text-slate-300 text-center group-hover:text-white transition-colors">
-                    {skill.name}
-                  </p>
-
-                  {/* Glow Effect on Hover */}
-                  <div 
-                    className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"
-                    style={{ backgroundColor: skill.color }}
-                  ></div>
-                </div>
-              </motion.div>
-            );
-          })}
+        <div className="flex flex-wrap justify-center gap-12 max-w-6xl mx-auto">
+          {filteredSkills.map((skill, index) => (
+            <motion.div
+              key={skill.name}
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+            >
+              <SkillItem skill={skill} index={index} />
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
