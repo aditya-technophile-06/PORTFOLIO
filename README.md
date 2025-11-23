@@ -1,24 +1,97 @@
+# 🚀 Modern Portfolio Website
+
+A stunning, award-winning portfolio website built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion. Features smooth animations, 3D-ready architecture, and a futuristic design.
+
+## ✨ Features
+
+- **Modern Tech Stack**: Next.js 14, TypeScript, Tailwind CSS
+- **Smooth Animations**: Framer Motion for buttery-smooth transitions
+- **3D Ready**: Three.js integration for future 3D models
+- **Fully Responsive**: Mobile-first design that looks great on all devices
+- **Tech Icons**: Beautiful icons for all technologies using react-icons
+- **Dark Theme**: Eye-friendly dark theme with gradient accents
+- **Performance Optimized**: Fast loading times and optimized images
+- **SEO Friendly**: Proper meta tags and semantic HTML
+
+## 📋 Sections
+
+1. **Hero Section** - Eye-catching introduction with animated text
+2. **About** - Personal information with profile photo
+3. **Skills** - Interactive skill cards with tech icons and filtering
+4. **Projects** - Showcase of featured projects with live demos
+5. **Experience** - Work history, education, and certifications
+6. **Contact** - Contact form with social media links
+
+## 🛠️ Technologies Used
+
+### Frontend
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- React Icons
+- Lucide Icons
+- Heroicons
+
+### 3D & Animations
+- Three.js
+- @react-three/fiber
+- @react-three/drei
+
+### Form & UI
+- React Hot Toast
+- React Intersection Observer
+- Next Themes
+
+## 🚀 Getting Started
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
-
-First, run the development server:
+### Installation
 
 ```bash
+# Clone the repository
+git clone <your-repo-url>
+
+# Navigate to project directory
+cd windsurf-portfolio
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the portfolio in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
+
+## 📝 Customization
+
+### Update Personal Information
+
+Edit `/src/constants/data.ts` to update:
+- Personal info (name, email, location, bio)
+- Social media links (GitHub, LinkedIn, Twitter, etc.)
+- Skills and technologies
+- Projects
+- Work experience
+- Education
+- Achievements and certifications
+
+### Add Profile Photo
+
+Replace `/public/profile.jpg` with your photo.
+
+### Add Resume
+
+Replace `/public/resume.pdf` with your resume file.
 
 ## Learn More
 
