@@ -44,12 +44,29 @@ export function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      toast.success('Message sent successfully! I\'ll get back to you soon.');
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data?.error || 'Failed to send message.');
+      }
+
+      toast.success("Message sent successfully! I'll get back to you soon.");
       setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error(error);
+      toast.error(error instanceof Error ? error.message : 'Something went wrong. Please try again later.');
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
