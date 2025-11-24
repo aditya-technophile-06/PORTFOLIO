@@ -19,7 +19,7 @@ export const personalInfo = {
   location: "Bangalore, Karnataka, India",
   bio: "Full stack developer with deep interest in web architecture, application security, and AI/ML-powered experiences. I enjoy shipping resilient products that blend clean engineering with thoughtful design.",
   profileImage: "/images/me.jpg",
-  resume: "/resume.pdf",
+  resume: "/Aditya.M_Resume.pdf",
 };
 
 export const socialLinks = {
