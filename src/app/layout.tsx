@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { Providers } from "./providers";
@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   description: "Portfolio for Aditya M — full-stack developer focused on secure, intelligent web experiences.",
   keywords: ["Aditya M", "portfolio", "full stack", "security", "AI", "Next.js"],
   authors: [{ name: "Aditya M" }],
-  themeColor: "#0f172a",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -23,6 +22,10 @@ export const metadata: Metadata = {
     description: "Portfolio for Aditya M — full-stack developer focused on secure, intelligent web experiences.",
     creator: "@aditya",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0f172a",
 };
 
 export default function RootLayout({
